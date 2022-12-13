@@ -1,2 +1,14 @@
 sudo usermod -aG docker dorian
 ## reload necessaire pour la prise d'effet
+
+
+docker pull ... / docker images
+### Permet de chercher et voir les images 
+
+5.d
+docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2/htdocs/index.html httpd:2.4
+
+docker rm -f id_conteneur
+docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2/htdocs/index.html httpd:2.4
+
+docker cp ./index.html apache:/usr/local/apache2/htdocs/
