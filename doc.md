@@ -23,11 +23,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```sudo usermod -aG docker dorian```
 
 
-
-
-
 ## Executer un serveur web dans un conteneur
-
 
 ### Récuperer une image depuis le Docker Hub
 
@@ -41,7 +37,6 @@ Commande pour vérifier les images présente sur le serveur
 
 Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 
-
 ### Lancer un conteneur avec un fichier persistant
 
 
@@ -54,7 +49,6 @@ docker rm -f id_conteneur
 docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2/htdocs/index.html httpd:2.4
 ```
 
-
 ### Copier un fichier dans un conteneurs
 
 Je vais ici copier l'index créé au dessus dans le repertoire apache dans le conteneur ! 
@@ -62,23 +56,18 @@ Je vais ici copier l'index créé au dessus dans le repertoire apache dans le co
 ```docker cp ./index.html apache:/usr/local/apache2/htdocs/```
 
 
-
-## Builder une image
+### Builder une image
 
 
 Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a ce que l'on souhaite.
-
 
 Commande de build
 
 `docker build -t . name:tag`
 
-
 Builder une image depuis un autre repertoire
 
 `docker build -f /path/dockerimage -t name:tag .`
-
-
 
 J'ai alors créé une image avec le chemin de l'index HTML créé précédement.
 
@@ -87,8 +76,7 @@ En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'util
 `docker run -d -p 80:80 apache:0.3`
 
 
-
-## BDD dans un conteneur
+### BDD dans un conteneur
 ```
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=password mysql:5.7
 docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
