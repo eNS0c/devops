@@ -1,2 +1,2 @@
 # devops
-DevOps Repo Course
+DevOps Repo Courses
