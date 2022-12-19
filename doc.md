@@ -77,10 +77,10 @@ En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'util
 
 
 ### BDD dans un conteneur
-
+```
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=password mysql:5.7
 docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
-
+```
 
 **_Paquet permetant d'observer les procésus en cours_**
 ```
