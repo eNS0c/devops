@@ -2,9 +2,9 @@
 
 ## Installation de Docker et Docker-Compose
 
-Le mieux est d'aller directement consulter la page de docker dédié a cet effet !  [![Légende](url vers l'image)](https://docs.docker.com/engine/install/ubuntu/)]
+Le mieux est d'aller directement consulter la page de docker dédié a cet effet !  [![Docker Install Ubuntu](https://docs.docker.com/engine/install/ubuntu/)]
 
-### Mais voici les commandes a executer :
+### Voici tout de même les commandes a executer :
 
 ```
 sudo apt-get update
@@ -51,16 +51,39 @@ docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2
 
 ### Copier un fichier dans un conteneurs
 
+Je vais ici copier l'index créé au dessus dans le repertoire apache dans le conteneur ! 
+
 ```docker cp ./index.html apache:/usr/local/apache2/htdocs/```
 
 
 ### Builder une image
 
 
-docker build -t . name:tag
+Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a ce que l'on souhaite.
 
-docker build -f /path/dockerimage -t . name:tag
-procps
-ps -ef
+Commande de build
+
+`docker build -t . name:tag`
+
+Builder une image depuis un autre repertoire
+
+`docker build -f /path/dockerimage -t name:tag .`
+
+J'ai alors créé une image avec le chemin de l'index HTML créé précédement.
+
+En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'utiliser l'argument `-d` !
+
+`docker run -d -p 80:80 apache:0.3`
+
+
+### BDD dans un conteneur
+
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=password mysql:5.7
 docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
+
+
+**_Paquet permetant d'observer les procésus en cours_**
+```
+apt install procps
+ps -ef
+```
