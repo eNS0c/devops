@@ -37,7 +37,7 @@ Commande pour vérifier les images présente sur le serveur
 
 Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 
-### Lancer un conteneur avec un fichier persistant
+### Lancer un conteneur avec un fichier local 
 
 
 ```docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2/htdocs/index.html httpd:2.4```
@@ -47,6 +47,11 @@ Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 ```
 docker rm -f id_conteneur
 ```
+**_Permet de supprimer tous les services et images non utilisé_**
+```
+docker systeme purge
+```
+
 
 ### Copier un fichier dans un conteneurs
 
