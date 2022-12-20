@@ -42,7 +42,7 @@ Commande pour vérifier les images présente sur le serveur
 Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 
 
-**_Commande permettant de bind le repertoire `/home/dorian/apps/apache/` qui contient le fichier *index.html* dans le conteneurs_**
+**_Commande permettant de bind le repertoire `/home/dorian/apps/apache/` qui contient le fichier *index.html* dans le conteneur_**
 ```
 docker run -d -p 80:80 -v /home/dorian/apps/apache/:/usr/local/apache2/htdocs/ httpd:2.4
 ```
@@ -80,7 +80,7 @@ docker build -t  name:tag .
 docker build -f /path/dockerimage -t name:tag .
 ```
 
-[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !
+[WARNING] Faire attention au path des arguments COPY depuis le repertoire où on lance le build !
 
 ### Lancer un conteneur a partir de l'image crée précedement
 
@@ -103,6 +103,30 @@ ps -ef
 
 ## Docker Compose
 
-Voici le fichier docker-compose.yml 
+Voici a quoi ressemberait la même conf avec un fichier docker-compose.yml 
+
+
+```
+Version: '3.5'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: upassword
+      MYSQL_DATABASE: lab
+      MYSQL_ROOT_PASSWORD: password
+
+  admin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+```
 
 
