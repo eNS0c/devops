@@ -1,5 +1,9 @@
 Version: '3.5'
 
+networks:
+  - front-end
+  - back-end
+
 services:
 
   db:
@@ -10,6 +14,14 @@ services:
       MYSQL_PASSWORD: upassword
       MYSQL_DATABASE: lab
       MYSQL_ROOT_PASSWORD: password
+    network:
+      - back-end
+
+  net:
+    image: wbitt/network-multitool
+    network:
+      - front-end
+      - back-end
 
   admin:
     image: phpmyadmin/phpmyadmin
@@ -18,4 +30,6 @@ services:
       - 8080:80
     depends_on:
       - db
+  network:
+    - front-end
 
