@@ -89,16 +89,17 @@ En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'util
 docker run -d -p 80:80 apache:0.3
 ```
 
+
+Utilisé des images builder permet :
+
+- d'éviter les commandes à rallonge
+- de partager une image avec tout son contenu (fichier html...)
+
+
 ## BDD dans un conteneur
 ```
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=password mysql:5.7
 docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
-```
-
-**_Paquet permetant d'observer les processus en cours_**
-```
-apt install procps
-ps -ef
 ```
 
 ## Docker Compose
@@ -127,6 +128,55 @@ services:
       - 8080:80
     depends_on:
       - db
+```
+
+Le fichier docker-compose permet une meilleure visibilité de la configuration complete dans les conteneurs.
+
+C'est la variable `environment` qui permet de configurer les services.
+
+
+## Observation des réseaux dans Docker
+
+Création de 3 services (web, app et db) et 2 réseaux (frontend et backend) avec l’image praqma/network-multitool.
+
+Voici de docker-compose
+
+```
+version: '3.7'
+
+networks:
+  front-end:
+    driver: bridge
+  back-end:
+
+services:
+
+  web:
+    image: wbitt/network-multitool
+    networks:
+      - front-end
+
+  app:
+    image: wbitt/network-multitool
+    networks:
+      - front-end
+      - back-end
+      
+  db:
+    image: wbitt/network-multitool
+    networks:
+      - back-end
+
+```
+
+
+
+
+
+**_Paquet permetant d'observer les processus en cours_**
+```
+apt install procps
+ps -ef
 ```
 
 
