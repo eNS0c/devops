@@ -68,7 +68,7 @@ Je vais ici copier l'index ajouté précédement dans le repertoire apache dans 
 ## Builder une image
 
 
-Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a nos besoins.
+Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a nos besoins dans un fichier `dockerfile`.
 
 **_Commande de build_**
 ```
