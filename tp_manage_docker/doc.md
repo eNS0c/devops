@@ -4,7 +4,7 @@
 
 Le mieux est d'aller directement consulter la page de docker dédié a cet effet !  [![Docker Install Ubuntu](https://docs.docker.com/engine/install/ubuntu/)]
 
-### Voici tout de même les commandes a executer :
+#### Voici tout de même les commandes a executer :
 
 ```
 sudo apt-get update
@@ -19,13 +19,14 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
-### Commande pour devenir docker root
+#### Commande pour devenir docker root
 ```sudo usermod -aG docker dorian```
 
+/!\ Commande nécessitant un changement de session.
 
 ## Executer un serveur web dans un conteneur
 
-### Récuperer une image depuis le Docker Hub
+#### Récuperer une image depuis le Docker Hub
 
 Le serveur repository par défaut de docker est le Docker Hub, il nous suffit alors d'executer la commande de pull pour récupérer l'image.
 
@@ -35,15 +36,17 @@ Commande pour vérifier les images présente sur le serveur
 
 ```docker images```
 
+
+#### Lancer un conteneur avec un fichier local 
+
 Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 
-### Lancer un conteneur avec un fichier local 
+
+**_Commande permettant de bind le repertoire `/home/dorian/apps/apache/` qui contient le fichier *index.html* dans le conteneurs_**
+```docker run -d -p 80:80 -v /home/dorian/apps/apache/:/usr/local/apache2/htdocs/ httpd:2.4```
 
 
-```docker run -d -p 80:80 -v /home/dorian/apps/apache/index.html:/usr/local/apache2/htdocs/index.html httpd:2.4```
-
-
-**_Commandes pour supprimer des conteneurs_**
+**_Commande suppression de conteneurs_**
 ```
 docker rm -f id_conteneur
 ```
@@ -53,7 +56,7 @@ docker systeme purge
 ```
 
 
-### Copier un fichier dans un conteneurs
+#### Copier un fichier dans un conteneurs
 
 Je vais ici copier l'index ajouté précédement dans le repertoire apache dans le conteneur ! 
 
@@ -63,20 +66,19 @@ Je vais ici copier l'index ajouté précédement dans le repertoire apache dans 
 ## Builder une image
 
 
-Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a ce que l'on souhaite.
+Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a nos besoin.
 
-Commande de build
+**_Commande de build_**
 
 `docker build -t  name:tag .`
 
-Builder une image depuis un autre repertoire
+**_Builder une image depuis un autre repertoire_**
 
 `docker build -f /path/dockerimage -t name:tag .`
 
 **_[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !_**
 
-
-J'ai alors créé une image avec le chemin de l'index HTML créé précédement.
+#### Lancer un conteneur a partir de l'image crée précedement
 
 En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'utiliser l'argument `-v` !
 
