@@ -70,7 +70,7 @@ Builder une image depuis un autre repertoire
 
 J'ai alors créé une image avec le chemin de l'index HTML créé précédement.
 
-En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'utiliser l'argument `-d` !
+En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'utiliser l'argument `-v` !
 
 `docker run -d -p 80:80 apache:0.3`
 
