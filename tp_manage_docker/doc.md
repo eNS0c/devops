@@ -62,11 +62,14 @@ Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a ce
 
 Commande de build
 
-`docker build -t . name:tag`
+`docker build -t  name:tag .`
 
 Builder une image depuis un autre repertoire
 
 `docker build -f /path/dockerimage -t name:tag .`
+
+**_[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !_**
+
 
 J'ai alors créé une image avec le chemin de l'index HTML créé précédement.
 
