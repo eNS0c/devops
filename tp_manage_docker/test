@@ -1,0 +1,25 @@
+version: '3.7'
+ 
+networks:
+  front-end:
+  back-end:
+ 
+ 
+services:
+
+  web:
+    image: wbitt/network-multitool
+    networks:
+      - front-end
+
+  app:
+    image: wbitt/network-multitool
+    networks:
+      - front-end
+      - back-end
+
+  db:
+    image: wbitt/network-multitool
+    networks:
+      - back-end
+
