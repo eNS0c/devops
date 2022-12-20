@@ -80,7 +80,7 @@ docker build -t  name:tag .
 docker build -f /path/dockerimage -t name:tag .
 ```
 
-**_[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !_**
+[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !
 
 ### Lancer un conteneur a partir de l'image crée précedement
 
