@@ -43,13 +43,15 @@ Je crée un fichier *index.html* avec le contenu suivant : `Finally working !`
 
 
 **_Commande permettant de bind le repertoire `/home/dorian/apps/apache/` qui contient le fichier *index.html* dans le conteneurs_**
-```docker run -d -p 80:80 -v /home/dorian/apps/apache/:/usr/local/apache2/htdocs/ httpd:2.4```
-
+```
+docker run -d -p 80:80 -v /home/dorian/apps/apache/:/usr/local/apache2/htdocs/ httpd:2.4
+```
 
 **_Commande suppression de conteneurs_**
 ```
 docker rm -f id_conteneur
 ```
+
 **_Permet de supprimer tous les services et images non utilisé_**
 ```
 docker systeme purge
@@ -66,24 +68,26 @@ Je vais ici copier l'index ajouté précédement dans le repertoire apache dans 
 ## Builder une image
 
 
-Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a nos besoin.
+Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a nos besoins.
 
 **_Commande de build_**
-
-`docker build -t  name:tag .`
+```
+docker build -t  name:tag .
+```
 
 **_Builder une image depuis un autre repertoire_**
-
-`docker build -f /path/dockerimage -t name:tag .`
+```
+docker build -f /path/dockerimage -t name:tag .
+```
 
 **_[WARNING] Faire attention au path des arguments COPY dupuis le repertoire où on lance le build !_**
 
-#### Lancer un conteneur a partir de l'image crée précedement
+### Lancer un conteneur a partir de l'image crée précedement
 
 En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'utiliser l'argument `-v` !
-
-`docker run -d -p 80:80 apache:0.3`
-
+```
+docker run -d -p 80:80 apache:0.3
+```
 
 ## BDD dans un conteneur
 ```
