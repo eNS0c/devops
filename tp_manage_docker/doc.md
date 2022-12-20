@@ -55,7 +55,7 @@ Je vais ici copier l'index ajouté précédement dans le repertoire apache dans 
 ```docker cp ./index.html apache:/usr/local/apache2/htdocs/```
 
 
-### Builder une image
+## Builder une image
 
 
 Builder une image permet de la faconner a notre guise pour qu'elle s'adapte a ce que l'on souhaite.
@@ -75,7 +75,7 @@ En lancant un conteneur a partir de cette image je n'ai alors plus besoin d'util
 `docker run -d -p 80:80 apache:0.3`
 
 
-### BDD dans un conteneur
+## BDD dans un conteneur
 ```
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=password mysql:5.7
 docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
@@ -86,3 +86,9 @@ docker run -d --name myadmin --link mysql-db:db -p 8080:80 phpmyadmin/phpmyadmin
 apt install procps
 ps -ef
 ```
+
+## Docker Compose
+
+Voici le fichier docker-compose.yml 
+
+
