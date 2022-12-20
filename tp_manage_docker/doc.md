@@ -141,7 +141,7 @@ C'est la variable `environment` qui permet de configurer les services.
 
 Création de 3 services (web, app et db) et 2 réseaux (frontend et backend) avec l’image praqma/network-multitool.
 
-Voici de docker-compose
+Voici le docker-compose
 
 ```
 version: '3.7'
@@ -171,8 +171,18 @@ services:
 
 ```
 
+Les lignes qui justifient le fait que web et db ne peuvent pas communiquer sont `IPv4Address` !
+On peut observer que ces deux services ne sont pas dans le même réseau avec la commande suivante :
 
+```
+docker network inspect tp_manage_docker_back-end
+```
 
+### Revers Proxy
+
+Cette méthode de closoner les reseaux entre eux permet de mieux sécuriser les accés et liens possibles entre les conteneurs.
+
+Une image nginx ou haproxy peuvent permettre de rediriger les flux entrant vers leurs destinations !
 
 
 **_Paquet permetant d'observer les processus en cours_**
