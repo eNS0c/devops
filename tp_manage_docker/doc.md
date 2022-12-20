@@ -185,6 +185,8 @@ Cette méthode de closoner les reseaux entre eux permet de mieux sécuriser les 
 Une image nginx ou haproxy peuvent permettre de rediriger les flux entrant vers leurs destinations !
 
 
+## Notes
+
 **_Paquet permetant d'observer les processus en cours_**
 ```
 apt install procps
