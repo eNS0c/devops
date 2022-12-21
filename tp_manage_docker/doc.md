@@ -2,11 +2,11 @@
 
 ## Installation de Docker et Docker-Compose
 
-Le mieux est d'aller directement consulter la page de docker dédié a cet effet !  [https://docs.docker.com/engine/install/ubuntu/]
+Le mieux est d'aller directement consulter la page de docker dédié a cet effet !  [Docker Install Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
 #### Voici tout de même les commandes a executer :
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg lsb-release
 
@@ -192,5 +192,3 @@ Une image nginx ou haproxy peuvent permettre de rediriger les flux entrant vers 
 apt install procps
 ps -ef
 ```
-
-
