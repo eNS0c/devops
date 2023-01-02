@@ -192,6 +192,3 @@ Une image nginx ou haproxy peuvent permettre de rediriger les flux entrant vers 
 apt install procps
 ps -ef
 ```
-
-
-.
