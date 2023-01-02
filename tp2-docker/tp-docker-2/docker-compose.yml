@@ -1,7 +1,9 @@
 version: '3.9'
   services:
     node:
-      ...
+      image: ma_super_app:1.0.0
 
     mysql:
-      ...
+      image: mysql
+      environment:
+
