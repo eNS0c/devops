@@ -3,9 +3,19 @@ version: '3.9'
 services:
   node:
     image: ma_super_app:1.0.0
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: upassword
+      DATABASE_NAME: lab
+    ports:
+      - 3000:3000
+    links:
+      - db
 
-  mysql:
-    image: mysql
+  db:
+    image: mysql:5.7
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: upassword
