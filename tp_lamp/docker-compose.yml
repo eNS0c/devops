@@ -5,6 +5,8 @@ services:
     image: httpd
     volumes:
       - "./app:/usr/local/apache2/htdocs/"
+    links:
+      - db
     ports:
       - 80:80
 
